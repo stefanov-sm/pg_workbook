@@ -28,7 +28,7 @@ $$;
   * like for example __FOO__.
   * Macros are globally substituted with json attribute text expressions from `args` json(b) object.
   * `args` attribute names are restricted to K&R identifiers. 
-  * Valuable quality features by Luca Ferrari 
+  * Valuable quality features by Luca Ferrari
   * 
   * Intended Use: EXECUTE dynsql_safe(sql_template, json_args) USING json_args;
   * 

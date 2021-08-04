@@ -1,3 +1,7 @@
+----------------------------------------
+-- pg_xmlworkbook, S. Stefanov, Aug-2021
+----------------------------------------
+
 CREATE OR REPLACE FUNCTION pg_xmlworkbook (arg_queries_array json, arg_sheet_names_array json default '[]', arg_parameters_array json default '[]')
 RETURNS SETOF text LANGUAGE plpgsql AS
 $function$

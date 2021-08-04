@@ -37,7 +37,7 @@ COPY
         v^2 as "square",
         v^3 as "cube",
         clock_timestamp() as "date and time",
-        '#<see more>##https://www.google.com/search?q='||v::text as "search Google"
+        format('#<see more about %1$s>##https://www.google.com/search?q=%1$s', v) as "search Google"
       from generate_series(__FROM__::integer, __TO__::integer, 1) t(v)
       where v::text like __PATTERN__;
       $query_a$,
@@ -48,7 +48,7 @@ COPY
         v^2 as "На квадрат",
         v^3 as "На трета степен",
         clock_timestamp() as "Дата & час",
-        '#<Виж повече>##https://www.google.com/search?q='||v::text as "Потърси го в Google"
+        format('#<Виж повече за %1$s>##https://www.google.com/search?q=%1$s', v) as "Потърси го в Google"
       from generate_series(__FROM__::integer, __TO__::integer, 1) t(v)
       where v::text like __PATTERN__;
       $query_b$,
@@ -59,17 +59,17 @@ COPY
         v^2 as "Square value",
         v^3 as "Cube value",
         clock_timestamp() as "Event date & time",
-        '#<Search the web>##https://www.google.com/search?q='||v::text as "Google it now!"
+        format('#<Search the web for %1$s>##https://www.google.com/search?q=%1$s', v) as "Google it now!"
       from generate_series(__ABC__::integer, __XYZ__::integer, 1) t(v)
       where v::text ~ __RX__;
       $query_c$
     ]::text[]),
     json '["Threes", "Четворки", "Fives"]',
     json '[
-           {"from":10,  "to":1010,  "pattern":"%3%"},
-           {"from":100, "to":1100,  "pattern":"%4%"}, 
-           {"abc":1000, "xyz":2000, "rx":"5"}
-          ]'
+        {"from":10,  "to":1010,  "pattern":"%3%"},
+        {"from":100, "to":1100,  "pattern":"%4%"}, 
+        {"abc":1000, "xyz":2000, "rx":"5"}
+    ]'
   )
-) TO '/path/to/delme.xml';
+) TO 'd:/temp/delme.xml';
 ```

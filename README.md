@@ -12,7 +12,7 @@ RETURNS SETOF text;
 ```
 ### How to use
 ```PGSQL
-select xline from util.pg_xmlworkbook
+select xline from pg_xmlworkbook
 (
     json '["select A ...", "select B ...", "select C ..."]', -- arg_queries_array
     json '["Sheet-A", "Sheet-B", "Sheet-C"]',                -- arg_sheet_names_array
@@ -27,7 +27,7 @@ select xline from util.pg_xmlworkbook
 ```PGSQL
 COPY
 (
-  select * from util.pg_xmlworkbook
+  select * from pg_xmlworkbook
   (
     to_json(array[
       $query_a$

@@ -66,10 +66,10 @@ COPY
     ]::text[]),
     json '["Threes", "Четворки", "Fives"]',
     json '[
-        {"from":10,  "to":1010,  "pattern":"%3%"},
-        {"from":100, "to":1100,  "pattern":"%4%"}, 
-        {"abc":1000, "xyz":2000, "rx":"5"}
-    ]'
+           {"from":10,  "to":1010,  "pattern":"%3%"},
+           {"from":100, "to":1100,  "pattern":"%4%"}, 
+           {"abc":1000, "xyz":2000, "rx":"5"}
+          ]'
   )
 ) TO '/path/to/delme.xml';
 ```

@@ -16,11 +16,11 @@ select xline from pg_xmlworkbook
 (
     json '["select A ...", "select B ...", "select C ..."]', -- arg_queries_array
     json '["Sheet-A", "Sheet-B", "Sheet-C"]',                -- arg_sheet_names_array
-    json '[                                                  -- arg_parameters_array
+    json '[
            {"argument_1":1, "argument_2":"A"}, 
            {"argument_11":10, "argument_12":"B"}, 
            {"argument_21":100, "argument_22":"Z"}
-          ]'
+          ]'                                                 -- arg_parameters_array
 ) xline; 
 ```
 ### Example. Create a three-sheet workbook out of three trivial parameterized queries 

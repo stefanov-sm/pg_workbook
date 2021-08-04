@@ -62,7 +62,7 @@ $$;
     Hint: Macro(s) left: __B__
     Where: PL/pgSQL function dynsql_safe(text,jsonb) line 19 at RAISE
 */
-create or replace function dynsql_safe(arg_query text, args jsonb) returns text as
+create or replace function dynsql_safe(arg_query text, args json) returns text as
 $$
 declare
     KRUCID_RX constant text := '[_A-Z][_A-Z0-9]*';
@@ -70,7 +70,7 @@ declare
     tokens_left text[];
 begin
     -- Rewrite the query. Convert __MACRO__ placeholders into json attribute text expressions
-    for running_key in select "key" from jsonb_each_text(args) loop
+    for running_key in select "key" from json_each_text(args) loop
         if running_key ~* ('^'||KRUCID_RX||'$') then
             arg_query := replace(arg_query, '__'||upper(running_key)||'__', '($1->>'''||running_key||''')');
         else

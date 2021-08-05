@@ -43,34 +43,34 @@ COPY
     to_json(array[
       $query_a$
       SELECT
-        v as "value",
-        to_char(v % 4000, 'FMRN') as "mod 4000 roman",
-        v^2 as "square",
-        v^3 as "cube",
-        clock_timestamp() as "date and time",
-        format('#<see more about %1$s>##https://www.google.com/search?q=%1$s', v) as "search Google"
+        v AS "value",
+        to_char(v % 4000, 'FMRN') AS "mod 4000 roman",
+        v^2 AS "square",
+        v^3 AS "cube",
+        clock_timestamp() AS "date and time",
+        format('#<see more about %1$s>##https://www.google.com/search?q=%1$s', v) AS "search Google"
       FROM generate_series(__FROM__::integer, __TO__::integer, 1) t(v)
-      WHERE v::text like __PATTERN__;
+      WHERE v::text LIKE __PATTERN__;
       $query_a$,
       $query_b$
       SELECT
-        v as "Стойност",
-        to_char(v % 4000, 'FMRN') as "Римски цифри, mod 4000",
-        v^2 as "На квадрат",
-        v^3 as "На трета степен",
-        clock_timestamp() as "Дата & час",
-        format('#<Виж повече за %1$s>##https://www.google.com/search?q=%1$s', v) as "Потърси го в Google"
+        v AS "Стойност",
+        to_char(v % 4000, 'FMRN') AS "Римски цифри, mod 4000",
+        v^2 AS "На квадрат",
+        v^3 AS "На трета степен",
+        clock_timestamp() AS "Дата & час",
+        format('#<Виж повече за %1$s>##https://www.google.com/search?q=%1$s', v) AS "Потърси го в Google"
       FROM generate_series(__FROM__::integer, __TO__::integer, 1) t(v)
-      WHERE v::text like __PATTERN__;
+      WHERE v::text LIKE __PATTERN__;
       $query_b$,
       $query_c$
       SELECT
-        v as "Native value",
-        to_char(v % 4000, 'FMRN') as "SPQR",
-        v^2 as "Square value",
-        v^3 as "Cube value",
-        clock_timestamp() as "Event date & time",
-        format('#<Search the web for %1$s>##https://www.google.com/search?q=%1$s', v) as "Google it now!"
+        v AS "Native value",
+        to_char(v % 4000, 'FMRN') AS "SPQR",
+        v^2 AS "Square value",
+        v^3 AS "Cube value",
+        clock_timestamp() AS "Event date & time",
+        format('#<Search the web for %1$s>##https://www.google.com/search?q=%1$s', v) AS "Google it now!"
       FROM generate_series(__ABC__::integer, __XYZ__::integer, 1) t(v)
       WHERE v::text ~ __RX__;
       $query_c$

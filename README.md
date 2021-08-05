@@ -36,7 +36,7 @@ Optional __arg_parameters_array__ is an array of JSON objects with parameters' n
 Parameter names are K&R case-insesnitive identifiers.  
 ### Example. Create a three-sheet workbook out of three trivial parameterized queries 
 ```PGSQL
--- Postgres server-side queries to workbook of spreadsheet example
+-- Postgres server-side queries to workbook of spreadsheets example
 COPY
 (
   select * from pg_xmlworkbook

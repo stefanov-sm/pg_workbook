@@ -33,7 +33,7 @@ __NB__: Placeholders are rewritten into runtime expressions that _always_ return
 Optional __arg_parameters_array__ is an array of JSON objects with parameters' names/values.  
   `{"from":15, "to":100015, "pattern":"%3%"}`  
 
-Parameters' names are K&R case-insesnitive identifiers.  
+Parameter names are K&R case-insesnitive identifiers.  
 ### Example. Create a three-sheet workbook out of three trivial parameterized queries 
 ```PGSQL
 COPY

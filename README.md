@@ -1,5 +1,5 @@
 # pg_xmlworkbook
-Export results of several Postgresql queries as a multi-sheet SpreadsheetML workbook (XML spreadsheet format).  
+Export results of Postgresql queries as a multi-sheet SpreadsheetML workbook (XML spreadsheet format).  
 The prototype of the function is as follows:
 ```PGSQL
 FUNCTION pg_xmlworkbook

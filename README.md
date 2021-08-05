@@ -42,37 +42,37 @@ COPY
   (
     to_json(array[
       $query_a$
-      select
+      SELECT
         v as "value",
         to_char(v % 4000, 'FMRN') as "mod 4000 roman",
         v^2 as "square",
         v^3 as "cube",
         clock_timestamp() as "date and time",
         format('#<see more about %1$s>##https://www.google.com/search?q=%1$s', v) as "search Google"
-      from generate_series(__FROM__::integer, __TO__::integer, 1) t(v)
-      where v::text like __PATTERN__;
+      FROM generate_series(__FROM__::integer, __TO__::integer, 1) t(v)
+      WHERE v::text like __PATTERN__;
       $query_a$,
       $query_b$
-      select
+      SELECT
         v as "Стойност",
         to_char(v % 4000, 'FMRN') as "Римски цифри, mod 4000",
         v^2 as "На квадрат",
         v^3 as "На трета степен",
         clock_timestamp() as "Дата & час",
         format('#<Виж повече за %1$s>##https://www.google.com/search?q=%1$s', v) as "Потърси го в Google"
-      from generate_series(__FROM__::integer, __TO__::integer, 1) t(v)
-      where v::text like __PATTERN__;
+      FROM generate_series(__FROM__::integer, __TO__::integer, 1) t(v)
+      WHERE v::text like __PATTERN__;
       $query_b$,
       $query_c$
-      select
+      SELECT
         v as "Native value",
         to_char(v % 4000, 'FMRN') as "SPQR",
         v^2 as "Square value",
         v^3 as "Cube value",
         clock_timestamp() as "Event date & time",
         format('#<Search the web for %1$s>##https://www.google.com/search?q=%1$s', v) as "Google it now!"
-      from generate_series(__ABC__::integer, __XYZ__::integer, 1) t(v)
-      where v::text ~ __RX__;
+      FROM generate_series(__ABC__::integer, __XYZ__::integer, 1) t(v)
+      WHERE v::text ~ __RX__;
       $query_c$
     ]::text[]),
     json '["Threes", "Четворки", "Fives"]',

@@ -23,6 +23,17 @@ select xline from pg_xmlworkbook
           ]'                                                 -- arg_parameters_array
 ) xline; 
 ```
+__arg_queries_array__ is an array of SQL queries that may be parameterized.  
+Parameter placeholders are defined as valid uppercase identifiers with two underscores as prefix and suffix.  
+`__FROM__`, `__TO__`, `__PATTERN__`   
+
+__NB__: Placeholders are rewritten into runtime expressions that _always_ return type `text`. This is why they may need to be explicitly cast.  
+`__FROM__::integer, __TO__::integer` in the example below  
+  
+Optional __arg_parameters_array__ is an array of JSON objects with parameters' names/values.  
+  `{"from":15, "to":100015, "pattern":"%3%"}`  
+
+Parameters' names are K&R case-insesnitive identifiers.  
 ### Example. Create a three-sheet workbook out of three trivial parameterized queries 
 ```PGSQL
 COPY
